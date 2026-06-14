@@ -1,9 +1,7 @@
 .container {
-    display: flex;      /* puts items side by side */
+    display: flex;      
     align-items: flex-start;
-    gap: 20px;          /* space between image and text */
+    gap: 20px; 
+    max-width: 400px;       
 }
 
-.text {
-    max-width: 400px;
-}
