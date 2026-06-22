@@ -1,47 +1,37 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Page Title</title>
+  <title>Page Title</title>
+  <link href="style.css" rel="stylesheet">
 </head>
 <body>
-  <link href="style.css" rel="stylesheet">
-<h1>Welcome to The Pizza House</h1>
-<div class="container">
-<img src="Screenshot 2026-06-12 091452.png" alt="Poster">
-<ol>
-  <li class="types">Cheesy Garlic Pizza - $15.80</li>
-  <li class="types">Pepperoni Pizza - $14.99</li>
-  <li class="types">Hot & Spicy Pizza - $16.00</li>
-  <li class="types">BBQ Meatlovers Pizza - $15.00</li>
-  <li class="types">Margherita Pizza - $16.99</li>
-  <li class="types">Hawaiian Pizza - $15.99</li>
-  </ol>
-</div>
+  <h1>Welcome to The Pizza House</h1>
+  <div class="container">
+    <img src="Screenshot 2026-06-12 091452.png" alt="Poster">
+    <ol>
+      <li class="types">Cheesy Garlic Pizza - $15.80</li>
+      <li class="types">Pepperoni Pizza - $14.99</li>
+      <li class="types">Hot & Spicy Pizza - $16.00</li>
+      <li class="types">BBQ Meatlovers Pizza - $15.00</li>
+      <li class="types">Margherita Pizza - $16.99</li>
+      <li class="types">Hawaiian Pizza - $15.99</li>
+    </ol>
 
-<body>
+    <form id="orderForm" onsubmit="submitOrder(event)">
+      <label for="nameField">Name:</label>
+      <input type="text" id="nameField" name="formName" placeholder="Name">
 
+      <label for="orderField">Order:</label>
+      <input type="text" id="orderField" name="formOrder" placeholder="Order">
 
-
-<form onsubmit="return false;">
-<label for=":formName">Name:</label>
-<input type="text" id="nameField" name="formName" placeholder="Name">
-<input type="submit" onClick=getFormInput()>
-<label for=":formName">Order:</label>
-<input type="text" id="orderField" name="formOrder" placeholder="Order">
-<input type="submit" onClick=getorderInput()>
-</form>
-  <div id="spaceForJavaScriptOutput">
+      <input type="submit" value="Submit Order">
+    </form>
 
   </div>
 
+  <div id="spaceForJavaScriptOutput"></div>
 
-</body>
-
-</html>
-
-
-
-<script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
 
