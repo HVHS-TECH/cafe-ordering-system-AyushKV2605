@@ -1,10 +1,21 @@
-console.log("Final-Website");
+console.log("Hello world");
+const OUTPUT = document.getElementById("spaceForJavaScriptOutput");
+OUTPUT.innerHTML += "<h2></h2>";
 
-  const OUTPUT = document.getElementById("spaceForJavaScriptOutput");
+//variables
 
-    // get values from the form
-  const NAME_FIELD = document.getElementById("nameField");
+/****************************
+main code
+****************************/
+function getFormInput(){
+const NAME_FIELD = document.getElementById("nameField");
+let Username = NAME_FIELD.value;
+OUTPUT.innerHTML += "<p>Hi "+ Username + "</p>";
+}
 
-  
-  let username = NAME_FIELD.value;
 
+function getorderInput () {
+const ORDER_FIELD = document.getElementById("orderField");
+let Userorder = ORDER_FIELD.value;
+OUTPUT.innerHTML += "<p>Your Order: "+ Userorder + "</p>";
+}

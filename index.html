@@ -18,11 +18,27 @@
   </ol>
 </div>
 
-  
-  <form onsubmit="return false;">
-    <label for="nameField">Name:</label>
-    <input type="text" id="nameField" name="nameField" required>
-    <input type="submit"
+<body>
+
+
+
+<form onsubmit="return false;">
+<label for=":formName">Name:</label>
+<input type="text" id="nameField" name="formName" placeholder="Name">
+<input type="submit" onClick=getFormInput()>
+<label for=":formName">Order:</label>
+<input type="text" id="orderField" name="formOrder" placeholder="Order">
+<input type="submit" onClick=getorderInput()>
+</form>
+  <div id="spaceForJavaScriptOutput">
+
+  </div>
+
+
+</body>
+
+</html>
+
 
 
 <script src="script.js"></script>
