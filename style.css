@@ -9,3 +9,9 @@
      padding: 25px;
      
 }
+
+.order-panel{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
