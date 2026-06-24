@@ -17,20 +17,19 @@
       <li class="types">Hawaiian Pizza - $15.99</li>
     </ol>
 
-    <form id="orderForm">
-  <label for="nameField">Name:</label>
-  <input type="text" id="nameField" placeholder="Enter your name">
-  <label for="pizzatype">Pizza Type:</label>
-  <input type="text" id="pizzatype" placeholder="Enter pizza type">
-  <label for="quantity">Quantity:</label>
-  <input type="text" id="quantity" placeholder="Enter quantity">
-  <label for="money">Money:</label>
-  <input type="text" id="money" placeholder="Enter amount of money">
-  <input type="submit" value="Submit Order">
-</form>
-  </div>
+    <form id="orderForm" onsubmit="submitOrder(event)">
+      <label for="nameField"></label>
+      <input type="text" id="nameField" name="formName" placeholder="Name">
 
-  <div id="spaceForJavaScriptOutput"></div>
+      <label for="orderField"></label>
+      <input type="text" id="orderField" name="formOrder" placeholder="Order">
+
+      <input type="submit" value="Submit Order">
+    </form>
+
+    <div id="spaceForJavaScriptOutput"></div>
+
+  </div>
 
   <script src="script.js"></script>
 </body>
