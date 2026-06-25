@@ -82,6 +82,6 @@ function payOrder() {
   if (change > 0) {
     OUTPUT.innerHTML += `<p>Change: $${formatMoney(change)}</p>`;
   } else {
-    OUTPUT.innerHTML += '<p>Exact payment received. Thank you!</p>';
+    OUTPUT.innerHTML += '<p>Thank you for coming to Pizza House!</p>';
   }
 }
