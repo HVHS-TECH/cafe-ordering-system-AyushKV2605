@@ -16,7 +16,7 @@ function formatMoney(amount) {
 }
 
 function getMenuPrice(order) {
-  order = order.toLowerCase().trim();
+ 
 
   if (order == "cheesy garlic pizza") {
     return 15.80;
