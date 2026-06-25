@@ -58,7 +58,7 @@ function payOrder() {
   const price = getMenuPrice(order);
 
  
-  if (price == null) {
+  if (price) {
     OUTPUT.innerHTML += '<p class="error">Unknown item. Please enter one of the menu pizza names.</p>';
     return;
   }
@@ -69,7 +69,6 @@ function payOrder() {
 
   const total = price * quantity;
   if (payment < total) {
-    const shortage = total - payment;
     OUTPUT.innerHTML += `<p class="error">Insufficient payment. You need to buy more money in: $${formatMoney(shortage)}</p>`;
     return;
   }
