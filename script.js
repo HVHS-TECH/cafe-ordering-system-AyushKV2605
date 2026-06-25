@@ -57,8 +57,11 @@ function payOrder() {
   const payment = Number(document.getElementById("paymentField").value);
   const price = getMenuPrice(order);
 
- 
-  if (price) {
+  if (!name || !order || !quantity) {
+    OUTPUT.innerHTML += '<p class="error">Please enter your name, order, and quantity before paying.</p>';
+    return;
+  }
+  if (price == null) {
     OUTPUT.innerHTML += '<p class="error">Unknown item. Please enter one of the menu pizza names.</p>';
     return;
   }
@@ -69,6 +72,7 @@ function payOrder() {
 
   const total = price * quantity;
   if (payment < total) {
+    const shortage = total - payment;
     OUTPUT.innerHTML += `<p class="error">Insufficient payment. You need to buy more money in: $${formatMoney(shortage)}</p>`;
     return;
   }
