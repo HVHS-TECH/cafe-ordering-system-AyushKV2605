@@ -1,6 +1,6 @@
 console.log("Hello world");
+
 const OUTPUT = document.getElementById("spaceForJavaScriptOutput");
-OUTPUT.innerHTML += "<h2></h2>";
 
 const MENU_PRICES = {
   "cheesy garlic pizza": 15.80,
@@ -16,72 +16,94 @@ function formatMoney(amount) {
 }
 
 function getMenuPrice(order) {
-  const normalized = order.trim().toLowerCase();
-  if (!normalized) return null;
-  if (MENU_PRICES[normalized] != null) return MENU_PRICES[normalized];
-  for (const [key, price] of Object.entries(MENU_PRICES)) {
-    if (normalized.includes(key) || key.includes(normalized)) {
-      return price;
-    }
+  order = order.toLowerCase().trim();
+
+  if (order == "cheesy garlic pizza") {
+    return 15.80;
+  } else if (order == "pepperoni pizza") {
+    return 14.99;
+  } else if (order == "hot & spicy pizza") {
+    return 16.00;
+  } else if (order == "bbq meatlovers pizza") {
+    return 15.00;
+  } else if (order == "margherita pizza") {
+    return 16.99;
+  } else if (order == "hawaiian pizza") {
+    return 15.99;
+  } else {
+    return null;
   }
-  return null;
 }
 
 function submitOrder(event) {
   event.preventDefault();
-  const name = document.getElementById("nameField").value.trim();
-  const order = document.getElementById("orderField").value.trim();
-  const quantity = Number(document.getElementById("quantityField").value);
-  const price = getMenuPrice(order);
 
-  if (!name || !order || !quantity) {
-    OUTPUT.innerHTML += '<p class="error">Please enter your name, order, and quantity.</p>';
+  OUTPUT.innerHTML = "";
+
+  let name = document.getElementById("nameField").value.trim();
+  let order = document.getElementById("orderField").value.trim();
+  let quantity = Number(document.getElementById("quantityField").value);
+
+  let price = getMenuPrice(order);
+
+  if (name == "" || order == "" || quantity <= 0) {
+    OUTPUT.innerHTML += "<p>Please fill in all the boxes.</p>";
     return;
   }
+
   if (price == null) {
-    OUTPUT.innerHTML += '<p class="error">Unknown item. Please enter one of the menu pizza names.</p>';
+    OUTPUT.innerHTML += "<p>That pizza is not on the menu.</p>";
     return;
   }
 
-  const total = price * quantity;
-  OUTPUT.innerHTML += `<p>Hi ${name}</p>`;
-  OUTPUT.innerHTML += `<p>Your Order: ${order}</p>`;
-  OUTPUT.innerHTML += `<p>Quantity: ${quantity}</p>`;
-  OUTPUT.innerHTML += `<p>Total due: $${formatMoney(total)}</p>`;
+  let total = price * quantity;
+
+  OUTPUT.innerHTML += "<h3>Order Summary</h3>";
+  OUTPUT.innerHTML += "<p>Name: " + name + "</p>";
+  OUTPUT.innerHTML += "<p>Pizza: " + order + "</p>";
+  OUTPUT.innerHTML += "<p>Quantity: " + quantity + "</p>";
+  OUTPUT.innerHTML += "<p>Total: $" + formatMoney(total) + "</p>";
 }
 
 function payOrder() {
-  const name = document.getElementById("nameField").value.trim();
-  const order = document.getElementById("orderField").value.trim();
-  const quantity = Number(document.getElementById("quantityField").value);
-  const payment = Number(document.getElementById("paymentField").value);
-  const price = getMenuPrice(order);
 
-  if (!name || !order || !quantity) {
-    OUTPUT.innerHTML += '<p class="error">Please enter your name, order, and quantity before paying.</p>';
+  OUTPUT.innerHTML = "";
+
+  let name = document.getElementById("nameField").value.trim();
+  let order = document.getElementById("orderField").value.trim();
+  let quantity = Number(document.getElementById("quantityField").value);
+  let payment = Number(document.getElementById("paymentField").value);
+
+  let price = getMenuPrice(order);
+
+  if (name == "" || order == "" || quantity <= 0) {
+    OUTPUT.innerHTML += "<p>Please enter your order first.</p>";
     return;
   }
+
   if (price == null) {
-    OUTPUT.innerHTML += '<p class="error">Unknown item. Please enter one of the menu pizza names.</p>';
-    return;
-  }
-  if (!payment || payment <= 0) {
-    OUTPUT.innerHTML += '<p class="error">Enter a payment amount to complete your order.</p>';
+    OUTPUT.innerHTML += "<p>That pizza is not on the menu.</p>";
     return;
   }
 
-  const total = price * quantity;
+  if (payment <= 0) {
+    OUTPUT.innerHTML += "<p>Please enter a payment amount.</p>";
+    return;
+  }
+
+  let total = price * quantity;
+
   if (payment < total) {
-    const shortage = total - payment;
-    OUTPUT.innerHTML += `<p class="error">Insufficient payment. You need to buy more money in: $${formatMoney(shortage)}</p>`;
+    let extra = total - payment;
+    OUTPUT.innerHTML += "<p>You need to pay another $" + formatMoney(extra) + ".</p>";
     return;
   }
 
-  const change = payment - total;
-  OUTPUT.innerHTML += `<p>Payment accepted. Total: $${formatMoney(total)}. Payment: $${formatMoney(payment)}.</p>`;
-  if (change > 0) {
-    OUTPUT.innerHTML += `<p>Change: $${formatMoney(change)}</p>`;
-  } else {
-    OUTPUT.innerHTML += '<p>Thank you for coming to Pizza House!</p>';
-  }
+  let change = payment - total;
+
+  OUTPUT.innerHTML += "<p>Payment successful!</p>";
+  OUTPUT.innerHTML += "<p>Total: $" + formatMoney(total) + "</p>";
+  OUTPUT.innerHTML += "<p>Paid: $" + formatMoney(payment) + "</p>";
+  OUTPUT.innerHTML += "<p>Change: $" + formatMoney(change) + "</p>";
+  OUTPUT.innerHTML += "<p>Thanks for ordering from Pizza House!</p>";
 }
