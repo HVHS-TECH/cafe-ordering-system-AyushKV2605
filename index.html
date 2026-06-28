@@ -1,62 +1,44 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pizza House Ordering</title>
+  <title>Page Title</title>
   <link href="style.css" rel="stylesheet">
 </head>
 <body>
-  <main class="page-shell">
-    <header class="hero">
-      <div>
-        <p class="eyebrow">Fresh pizza, fast service</p>
-        <h1>Welcome to Pizza House</h1>
-        <p class="hero-copy">Choose your favorite pizza, add the quantity, and pay in one simple order.</p>
-      </div>
-      <img src="Screenshot 2026-06-12 091452.png" alt="Delicious pizza" class="hero-image">
-    </header>
+  <h1>Welcome to The Pizza House</h1>
+  <div class="container">
+    <img src="Screenshot 2026-06-12 091452.png" alt="Poster">
+    <ol>
+      <li class="types">Cheesy Garlic Pizza - $15.80</li>
+      <li class="types">Pepperoni Pizza - $14.99</li>
+      <li class="types">Hot & Spicy Pizza - $16.00</li>
+      <li class="types">BBQ Meatlovers Pizza - $15.00</li>
+      <li class="types">Margherita Pizza - $16.99</li>
+      <li class="types">Hawaiian Pizza - $15.99</li>
+    </ol>
 
-    <section class="content-grid">
-      <article class="menu-card">
-        <h2>Today's menu</h2>
-        <ol class="menu-list">
-          <li>Cheesy Garlic Pizza - $15.80</li>
-          <li>Pepperoni Pizza - $14.99</li>
-          <li>Hot & Spicy Pizza - $16.00</li>
-          <li>BBQ Meatlovers Pizza - $15.00</li>
-          <li>Margherita Pizza - $16.99</li>
-          <li>Hawaiian Pizza - $15.99</li>
-        </ol>
-      </article>
+    <div class="order-panel">
+      <form id="orderForm" onsubmit="submitOrder(event)">
+        <label for="nameField"></label>
+        <input type="text" id="nameField" name="formName" placeholder="Name">
 
-      <article class="order-card">
-        <h2>Place your order</h2>
-        <form id="orderForm">
-          <label for="nameField">Your name</label>
-          <input type="text" id="nameField" name="formName" placeholder="Enter your name">
+        <label for="orderField"></label>
+        <input type="text" id="orderField" name="formOrder" placeholder="Order">
 
-          <label for="orderField">Pizza selection</label>
-          <select id="orderField" name="formOrder">
-            <option value="" disabled selected>Select a pizza</option>
-          </select>
+        <label for="quantityField"></label>
+        <input type="number" id="quantityField" name="formQuantity" placeholder="Quantity" min="1">
 
-          <label for="quantityField">Quantity</label>
-          <input type="number" id="quantityField" name="formQuantity" placeholder="1" min="1" value="1">
+        <label for="paymentField"></label>
+        <input type="number" id="paymentField" name="formPayment" placeholder="Payment amount" min="0" step="0.01">
 
-          <label for="paymentField">Payment amount</label>
-          <input type="number" id="paymentField" name="formPayment" placeholder="0.00" min="0" step="0.01">
+        <input type="submit" value="Submit Order">
+        <button type="button" id="payButton" onclick="payOrder()">Pay</button>
+      </form>
 
-          <div class="button-row">
-            <button type="submit" class="primary">Submit order</button>
-            <button type="button" id="payButton" class="secondary">Pay now</button>
-          </div>
-        </form>
+      <div id="spaceForJavaScriptOutput"></div>
+    </div>
 
-        <div id="spaceForJavaScriptOutput" class="output-box"></div>
-      </article>
-    </section>
-  </main>
+  </div>
 
   <script src="script.js"></script>
 </body>
