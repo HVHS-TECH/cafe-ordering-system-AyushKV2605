@@ -101,7 +101,6 @@ function payOrder() {
 
   let change = payment - total;
 
-  OUTPUT.innerHTML += "<p>Payment successful!</p>";
   OUTPUT.innerHTML += "<p>Total: $" + formatMoney(total) + "</p>";
   OUTPUT.innerHTML += "<p>Paid: $" + formatMoney(payment) + "</p>";
   OUTPUT.innerHTML += "<p>Change: $" + formatMoney(change) + "</p>";
